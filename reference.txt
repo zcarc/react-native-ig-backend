@@ -20,5 +20,8 @@ context에 request를 담아줌
 
 toggleLike: async(_, args, {request}) => {...} 의 세번째 인자는 context를 의미 이 부분은 server.js의 context 
 
+HTTP HEADERS
+{"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNrOGU2anBtMG50dTcwOTM0Y3N6dWFobHAiLCJpYXQiOjE1ODU2NTg3Njl9.7ahuDsUKBJPyAYpsEI05Ci5IAwZBya0FOMdLfK-3qK4" }
+
 
 #3.7 toggleLike Resolver part One

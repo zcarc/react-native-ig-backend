@@ -8,28 +8,29 @@ export default {
 
       const { postId } = args;
       const { user } = request;
+      const filterOptions = {
+        AND: [
+          {
+            user: {
+              id: user.id
+            }
+          },
+          {
+            post: {
+              id: postId
+            }
+          }
+        ]
+      };
 
       try {
 
-        const existingLike = await WebGLShaderPrecisionFormat.$exists.like({
+        const existingLike = await prisma.$exists.like(filterOptions);
 
-          AND: [
-            {
-              user: {
-                id: user.id
-              }
-            },
-            {
-              post: {
-                id: postId
-              }
-            }
-          ]
-
-        });
-
+        // 좋아요 삭제
         if (existingLike) {
-          // TO DO
+          await prisma.deleteManyLikes(filterOptions);
+
           
         } else {
           await prisma.createLike({
