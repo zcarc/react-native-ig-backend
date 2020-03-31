@@ -1,5 +1,4 @@
 import { prisma } from "../../../../generated/prisma-client";
-import { USER_FRAGMENT } from "../../../fragment";
 
 
 // (_) 언더스코어는 변수 이름이 될 수 있다.
