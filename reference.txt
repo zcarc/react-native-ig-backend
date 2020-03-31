@@ -17,3 +17,8 @@ passport.authenticate('jwt', {session: false}, (error, user) 여기서
 그리고 나서 server.js의 
 const server = new GraphQLServer({ schema, context: ({request}) => {...} }); 
 context에 request를 담아줌
+
+toggleLike: async(_, args, {request}) => {...} 의 세번째 인자는 context를 의미 이 부분은 server.js의 context 
+
+
+#3.7 toggleLike Resolver part One
