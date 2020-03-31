@@ -5,6 +5,7 @@ import logger from 'morgan';
 import schema from './schema';
 import "./passport";
 import { authenticateJwt } from './passport';
+import { isAuthenticated } from './middlewares';
 
 const PORT = process.env.PORT || 4000;
 
@@ -14,9 +15,13 @@ const PORT = process.env.PORT || 4000;
 // const server = new GraphQLServer({schema, context:{prisma}});
 
 // passport에 입력되는 req 객체와 다르다 context의 req객체에 담기는 정보중 하나가 passport의 req 객체와 같다.
+
+// resolver에서 context를 매개변수로 사용한다면 자동적으로 
+// ({ request }) => ({ request, isAuthenticated }) 의
+// request, isAuthenticated 가 리턴되서 resolver 매개변수로 둘 다 사용할 수 있다.
 const server = new GraphQLServer({
   schema,
-  context: ({ request }) => ({ request })
+  context: ({ request }) => ({ request, isAuthenticated })
 });
 
 server.express.use(logger('dev'));

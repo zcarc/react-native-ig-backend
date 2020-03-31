@@ -13,8 +13,6 @@ export default {
 
       try {
 
-        throw Error();
-
         await sendSecretMail(email, loginSecret);
         await prisma.updateUser({
           data: { loginSecret },
