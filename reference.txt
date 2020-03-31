@@ -1,1 +1,19 @@
 https://randomkeygen.com/
+
+
+#3.6 Passport JWT part Three
+
+서버에 전달되는 모든 요청은 
+server.express.use(authenticateJwt); 함수를 통과하는데
+이 함수는 passport.authenticate('jwt') 를 실행하게 되고
+passport.use(new Strategy(jwtOptions, verifyUser)); 의
+jwtOptions에서 jwt 토큰을 추출하게 되고 성공한다면 
+두번째 인자인 verifyUser 함수를 실행하게 됨
+그리고 verifyUser의 payload은 토큰에서 해석된 id를 받아서 user를 찾아서 반환
+반환할 때 done(null, user) 를 호출하게되면 
+passport.authenticate('jwt', {session: false}, (error, user) 여기서 
+세번째 인자인 (error, user) = {...} 콜백함수를 호출하게 됨
+그리고 조건과 같이 user가 있다면 req.user = user로 req 객체에 user를 추가함
+그리고 나서 server.js의 
+const server = new GraphQLServer({ schema, context: ({request}) => {...} }); 
+context에 request를 담아줌
