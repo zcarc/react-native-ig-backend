@@ -7,8 +7,6 @@ import logger from 'morgan';
 import schema from './schema';
 import {sendSecretMail} from './utils';
 
-sendSecretMail('메일을 보낼 이메일 주소를 적으세요.' ,'123');
-
 const PORT = process.env.PORT || 4000;
 
 const server = new GraphQLServer({schema});
