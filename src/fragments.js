@@ -1,13 +1,39 @@
+
+// UserParts on User 의 UserParts는 영향이 없고 User만 model명과 같아야한다.
+export const USER_FRAGMENT = `
+        id
+        username
+`;
+
 export const COMMENT_FRAGMENT = `
-    fragment CommentParts on Comment {
         id
         text
         user {
-            username
+            ${USER_FRAGMENT}
+        }
+`;
+
+export const FILE_FRAGMENT = `
+        id
+        url
+`;
+
+export const FULL_POST_FRAGMENT = `
+    fragment PostsParts on Post {
+        id
+        location
+        caption
+        files {
+            ${FILE_FRAGMENT}
+        }
+        comments {
+            ${COMMENT_FRAGMENT}
+        }
+        user {
+            ${USER_FRAGMENT}
         }
     }
 `;
-
 
 // $fragment로 호출되는 fragment인데
 // 아래의 컬럼들(id, username 등)이 정의되어 있지 않으면 반환받지 못한다.
