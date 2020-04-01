@@ -25,21 +25,5 @@ export default {
     }
   },
 
-  User: {
-
-    fullName: parent => {
-
-      return `${parent.firstName} ${parent.lastName}`;
-    }
-  }
-
-  // fullName의 쿼리상의 부모는 User이므로 parent는 User가 반환됨
-  // Query me의 return { user: userProfile , posts}
-  // 이 부분이  user: null 이라면 parent는 null이 반환됨
-  // User: {
-  //   fullName: (parent, __, { request }) => {
-  //     console.log('parent of', parent);
-  //     return "lalalal";
-  //   }
-  // }
+  
 };
