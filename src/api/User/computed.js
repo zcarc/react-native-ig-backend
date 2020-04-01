@@ -6,55 +6,43 @@ export default {
       return `${parent.firstName} ${parent.lastName}`;
     },
 
-    amIFollowing: async (parent, _, { request }) => {
+    isFollowing: async (parent, _, { request }) => {
       const { user } = request;
       const { id: parentId } = parent;
 
-      console.log("user:", user);
-      console.log("parent: ", parent);
-      console.log("parentId: ", parentId);
+      // console.log("user:", user);
+      // console.log("parent: ", parent);
+      // console.log("parentId: ", parentId);
 
       try {
-
-        const exists = await prisma.$exists.user({
-          AND: [{ id: parentId }, { followers_some: [user.id] }]
+        // true or false
+        return prisma.$exists.user({
+          AND: [
+            {
+              id: user.id
+            },
+            {
+              following_some: {
+                id: parentId
+              }
+            }
+          ]
         });
-
-        console.log('exists: ', exists);
-
-        if(exists) {
-          return true;
-          
-        } else {
-          return false;
-        }
-
-      } catch(e) {
+      } catch (e) {
         console.error(e);
         return false;
       }
-      
     },
 
-    itsMe: (parent, _, {request}) => {
-      const {user} = request;
-      const {id: parentId} = parent;
+    isSelf: (parent, _, { request }) => {
+      const { user } = request;
+      const { id: parentId } = parent;
 
-      console.log("user:", user);
-      console.log("parent: ", parent);
+      // console.log("user:", user);
+      // console.log("parent: ", parent);
 
       return user.id === parentId;
     }
   }
+
 };
-
-
-// fullName의 쿼리상의 부모는 User이므로 parent는 User가 반환됨
-// Query me의 return { user: userProfile , posts}
-// 이 부분이  user: null 이라면 parent는 null이 반환됨
-// User: {
-//   fullName: (parent, __, { request }) => {
-//     console.log('parent of', parent);
-//     return "lalalal";
-//   }
-// }
