@@ -35,6 +35,15 @@ export const FULL_POST_FRAGMENT = `
     }
 `;
 
+export const ROOM_FRAGMENT = `
+    fragment RoomParts on Room {
+        id
+        participants {
+            id
+        }
+    }
+`;
+
 // $fragment로 호출되는 fragment인데
 // 아래의 컬럼들(id, username 등)이 정의되어 있지 않으면 반환받지 못한다.
 // 여기서는 fgrgment를 쓰는 이유는 posts{}는 prisma가 가져오지 못하기 때문에 
