@@ -26,3 +26,6 @@ HTTP HEADERS
 
 #3.20 editPost deletePost Resolver
 editPost.graphql의 enum은 action이고 하나 또는 나머지라고 생각하면 될 것 같다.
+
+#3.26 Introduction to Subscriptions
+prisma Subscriptions가 어떤것인지 설명
