@@ -29,3 +29,5 @@ editPost.graphql의 enum은 action이고 하나 또는 나머지라고 생각하
 
 #3.26 Introduction to Subscriptions
 prisma Subscriptions가 어떤것인지 설명
+
+#3.27 newMessage Subscription part One
