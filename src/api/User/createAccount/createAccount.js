@@ -3,18 +3,19 @@ export default {
     // prisma를 3번째 인자인 context에서 가져온다.
     // createAccount: async (_, args, {prisma}) => {
     createAccount: async (_, args) => {
-
+      
       const { username, email, firstName = "", lastName = "", bio = "" } = args;
 
-      // const user = await prisma.createUser({
-      //   username,
-      //   email,
-      //   firstName,
-      //   lastName,
-      //   bio
-      // });
+      const user = await prisma.createUser({
+        username,
+        email,
+        firstName,
+        lastName,
+        bio
+      });
 
-      return null;
+      return true;
+
     }
   }
 };
