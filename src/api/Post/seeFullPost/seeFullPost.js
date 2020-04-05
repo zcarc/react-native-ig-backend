@@ -5,7 +5,6 @@ export default {
     seeFullPost: async (_, args) => {
       const { id } = args;
       return prisma.post({ id });
-      
-    }
-  }
+    },
+  },
 };

@@ -9,16 +9,9 @@ import { prisma } from "../../../../generated/prisma-client";
 export default {
   Query: {
     me: async (_, __, { request, isAuthenticated }) => {
-      console.log("user parent: ", _);
       isAuthenticated(request);
       const { user } = request;
-      const userProfile = await prisma.user({ id: user.id });
-      const posts = await prisma.user({ id: user.id }).posts();
-
-      return {
-        user: userProfile,
-        posts
-      };
+      return await prisma.user({ id: user.id });
 
       // Prisma client는 강한 관계를 설정하지 않으므로 ".$fragment()"를 붙여줘서 posts들을 가져올 수 있다.
       // return prisma.user({id: user.id}).$fragment(USER_FRAGMENT);
