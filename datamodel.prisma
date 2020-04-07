@@ -1,6 +1,6 @@
 type User {
   id: ID! @id
-  avatar: String
+  avatar: String @default(value: "https://miro.medium.com/max/1400/1*b6Iy7_Ii0wUHUMcw0_fXGQ.jpeg")
   username: String! @unique
   email: String! @unique
   firstName: String @default(value: "")
